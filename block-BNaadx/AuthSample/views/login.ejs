@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Login form</h1>
+    
+      
+    
+    
+   <form class="" action="/login" method="post">
+       <% if(error) {%>
+         
+          <p class="error-login"><%= error %></p>
+       <% } %>
+          <label>Username</label>
+          <input type="text" name="Username">
+          <label>Password</label>
+          <input type="password" name="Password">
+          <input type="submit">
+  </form>
+
+</body>
+</html>
