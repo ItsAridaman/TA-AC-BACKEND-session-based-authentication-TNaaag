@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>MyApp</h1>
+    <div><a href="/login">
+            <button>back</button>
+        </a>
+    </div>
+
+    <div>
+
+        <li>
+            <%= result.Name %>
+        </li>
+        <li>
+            <%= result.Price %>
+        </li>
+        <li>
+            <%= result.Size %>
+        </li>
+        <li>
+            <%= result.Summary %>
+        </li>
+
+        <a href="/<%= result._id %>/edit">edit</a>
+        <a href="/<%= result._id %>/delete">delete</a>
+    </div>
+
+    <hr>
+    <div>
+        <a href="/<%= result._id %>/likes">
+            <button>Likes</button>
+        </a>
+    </div>
+    <%= result.Likes %>
+    <hr>
+
+    <div>
+        <a href="/<%= result._id %>/cart">
+            <button class="Button">Buy Now</button>
+        </a>
+        <a href="">
+            <button class="Button">Add to cart</button>
+        </a>
+    </div>
+
+    <div>
+        
+        <form action="/<%= result._id %>/comment" method="post">
+            <h>Add comment</h>
+            <textarea name="content"></textarea>
+            <input type="submit">
+        </form>
+    </div>
+
+    <div>
+        <% comment.forEach((comment)=>{ %>
+            <hr>
+             <li><%= comment.content %></li>
+            
+             <a href="/comment/edit/<%= comment._id %>">edit</a>
+             <a href="/comment/delete/<%= comment._id %>">delete</a>
+         <% }) %>
+    </div>
+
+    
+
+</body>
+
+</html>

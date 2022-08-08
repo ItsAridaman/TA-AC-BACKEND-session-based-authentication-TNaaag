@@ -8,10 +8,61 @@
 
 <body>
     <h1>MyApp</h1>
-    <a href="/logout">
-        <button>LogOut</button>
-    </a>
-    <h>User created successfully</h>
+    <div><a href="/logout">
+            <button>LogOut</button>
+        </a>
+        <a href="/addnew">
+            <button>Add New</button>
+        </a>
+        <a href="/Profile">
+            <button>Profile</button>
+        </a>
+        <a href="/Cart">
+            <button>Cart</button>
+        </a>
+    </div>
+
+    <div>
+        <form class="" action="" method="">
+            <label>Category</label>
+            <select>
+                <option></option>
+                <option>mens</option>
+                <option>womens</option>
+                <option>childrens</option>
+            </select>
+            <select>
+                <option></option>
+                <option>0-500</option>
+                <option>501-1000</option>
+                <option>And above</option>
+            </select>
+            <select>
+                <option></option>
+                <option>s</option>
+                <option>m</option>
+                <option>l</option>
+            </select>
+            
+            <input type="submit">
+    </form>
+
+        <div>
+         <% result.forEach((result)=> { %>
+           <div class="product-div">
+               <li><%= result.Name %></li>
+               <li><%= result.Price %></li>
+               <li><%= result.Size %></li>
+            <a href="/<%= result._id %>/productdetails">Details</a>
+           </div>
+            
+         <% }) %>
+    </div>
+   
+  
+    </div>
+
+
 </body>
 
 </html>
