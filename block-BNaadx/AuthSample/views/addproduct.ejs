@@ -5,16 +5,22 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Registration form</h1>
+    <% include partials/header %>
+    <h1>ADD PRODUCT DETAILS</h1>
     
-   <form class="" action="/addnew" method="post">
+   <form class="form-1" action="/addnew" method="post">
           <label>Name</label>
           <input type="text" name="Name">
           <label>Price</label>
-          <input type="number" name="Price">
+          <input type="text" name="Price">
+          <label>Size</label>
+          <input type="text" name="Size">
           <label>Description</label>
-          <input type="number" name="Description">
-          <input type="submit">
+          <input type="text" name="Description">
+          <label for="Image">Upload Image</label>
+                <input type="file" id="Image" 
+                       name="Image">
+          <input class="submit-button" type="submit">
   </form>
 
 </body>

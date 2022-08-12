@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <% include partials/header %>
+  <h1>Edit profile</h1>
+  <div><a href="/userprofile">
+    <button>back</button>
+</a>
+</div>
+
+  <form class="form-1 form-2" action="/editprofile" method="post">
+    <label>Name</label>
+    <input type="text" value="<%= user.Name %>" name="Name">
+    <label>Username</label>
+    <input type="text" value="<%= user.Username %>" name="Username">
+    <label>Password</label>
+    <input type="password" value="<%= user.Password %>" name="Password">
+
+    <input type="submit">
+  </form>
+
+</body>
+
+</html>

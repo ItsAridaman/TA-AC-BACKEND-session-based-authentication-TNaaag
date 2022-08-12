@@ -12,6 +12,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var session = require('express-session');
 var flash=require('connect-flash');
+var fileUpload=require('express-fileupload');
+var auth=require('./middlewares/auth')
+
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/AuthDemo", (err) => {
@@ -44,7 +47,10 @@ app.use(session({
   })}));
 
 app.use(flash());
+app.use(fileUpload());
 
+
+app.use(auth.userInfo);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

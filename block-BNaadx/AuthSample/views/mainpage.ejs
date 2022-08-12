@@ -7,59 +7,88 @@
 </head>
 
 <body>
-    <h1>MyApp</h1>
-    <div><a href="/logout">
-            <button>LogOut</button>
-        </a>
+    <h>Logged in as: <%= user.Name %></h>
+    
+   <% include partials/header %>
+   
+    <div class="div-1">
         <a href="/addnew">
             <button>Add New</button>
         </a>
-        <a href="/Profile">
-            <button>Profile</button>
-        </a>
-        <a href="/Cart">
-            <button>Cart</button>
-        </a>
+        <div>
+            <a href="/logout">
+                <button>LogOut</button>
+            </a>
+
+            <a href="/userprofile">
+                <button>Profile</button>
+            </a>
+            <a href="/cart">
+                <button>Cart(<%= cart.length %>)</button>
+            </a>
+        </div>
+
     </div>
 
-    <div>
+    <div class="div-2">
         <form class="" action="" method="">
-            <label>Category</label>
+            <label>Filter by category</label>
             <select>
                 <option></option>
                 <option>mens</option>
                 <option>womens</option>
                 <option>childrens</option>
             </select>
+            <label>Filter by price</label>
             <select>
                 <option></option>
                 <option>0-500</option>
                 <option>501-1000</option>
                 <option>And above</option>
             </select>
+            <label>Filter by size</label>
             <select>
                 <option></option>
-                <option>s</option>
-                <option>m</option>
-                <option>l</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
             </select>
-            
-            <input type="submit">
-    </form>
 
-        <div>
-         <% result.forEach((result)=> { %>
-           <div class="product-div">
-               <li><%= result.Name %></li>
-               <li><%= result.Price %></li>
-               <li><%= result.Size %></li>
-            <a href="/<%= result._id %>/productdetails">Details</a>
-           </div>
-            
-         <% }) %>
-    </div>
-   
-  
+            <input type="submit">
+        </form>
+        <hr>
+        <div class="product-div-1">
+
+            <% result.forEach((result)=> { %>
+                <div class="product-div">
+                    <div class="image-div1">
+                        <img src="/images/<%= result.Image %>" alt="Image">
+
+                    </div>
+                    <div>
+                        <hr>
+                        <li>Name: <%= result.Name %>
+                        </li>
+                        <li>Price: <%= result.Price %>
+                        </li>
+                        <li>Size: <%= result.Size %>
+                        </li>
+                        <div class="button-div-cart-1">
+                            <a href="/<%= result._id %>/cart/mainpage">
+                                <button class="Button">Add to cart</button>
+                            </a>
+    
+                            <a href="/<%= result._id %>/productdetails">Details</a>
+                        </div>
+                       
+                    </div>
+
+                </div>
+
+                <% }) %>
+        </div>
+
+
     </div>
 
 
