@@ -1,10 +1,9 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  padding: 20px 50px;
+  font-family: 'Montserrat', sans-serif;}
 
 a {
-  color: #00B7FF;
+  color: rgb(9, 147, 239);
 }
 .error-login
 {
@@ -12,12 +11,247 @@ a {
 }
 .product-div
 {
-  border: 2px solid black;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  width: 21%;
+  border-radius: 5px;
+  padding: 7px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;}
 .Button
 {
   background-color: rgb(241, 198, 41);
-  color: black;
+  color: rgb(0, 0, 0);
   border-radius: 4px;
+  border: 1px solid rgb(49, 48, 48);
+  padding: 4px;
+  
+}
+.div-1
+{
+  display: flex;
+  justify-content: space-between;
+}
+button
+{
+  background-color: rgb(9, 147, 239);
+  color: white;
+  border-radius: 4px;
+  border: 2px solid rgb(9, 147, 239);
+}
+.div-2
+{
+  padding: 20px 00;
+}
+.form-1
+{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.form-1 input
+{
+  border-radius: 4px;
+  padding: 7px 4px;
+  border: 1px solid rgb(38, 37, 37);
+}
+h1
+{
+  text-align: center;
+  font-size: 20px;
+  text-decoration:underline;
+}
+h2
+{
+  text-align: center;
+  font-size: 30px;
+  color: rgb(68, 66, 66);
+  
+}
+.submit-button
+{
+  background-color: rgb(9, 147, 239);
+  margin-top: 14px;
+}
+.product-div-1
+{
+  padding: 20px 00;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.button-div-cart
+{
+  padding: 15px 00;
+}
+
+.comment-div
+{
+  padding: 10px 00;
+  background-color: rgb(217, 222, 221);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.image-div1 img
+{
+  width: 100%;
+
+}
+
+.product-details-3
+{
+  width: 600px;
+  margin: 0 auto;
+}
+.product-details-4
+{
+  display: flex;
+  justify-content: space-between;
+  
+}
+.area
+{
+  width: 45%;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.indexpage-div
+{
+  height: 100px;
+  margin-top:70px;
+  align-items: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 200px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+
+.form-2
+{
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+width: 200px;
+}
+.form-2 input
+{
+  border: 2px solid rgb(9, 147, 239);
+  
+}
+.indexpage-div button
+{
+
+  padding: 6px 8px;
+}
+
+.cart-div-1{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 70px;
+  border-radius: 5px;
+}
+
+.cart-div-2{
+  width: 18%;
+  padding: 14px;
+  border-radius: 5px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;  
+}
+
+.cart-div-2 img
+{
+width: 100%;
+}
+.cart-2
+{
+  width: 100%;
+  padding: 16px 00;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+}
+.Button-5
+{
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
+  padding: 6px;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(244, 222, 53);
+  font-size: 12px;
+  border: none;
   border: 1px solid black;
+}
+.cart-span
+{
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: solid;
+}
+.cart-div
+{
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 7px;
+  background-color: rgb(240, 237, 49);
+  align-items: center;
+  
+}
+.profile-div
+{
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  margin: 0 auto;
+  border: 2px solid grey;
+  width: 200px;
+  justify-content: space-between;
+  padding: 20px ;
+  
+}
+
+.profile-div-1 a
+{
+margin-left: 340px;
+margin-top: 20px;
+}
+
+.partials-div
+{
+  padding: 7px 00;
+  background-color: aquamarine;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.button-div-cart-1
+{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 6px;
+}
+
+.quantity-div
+{
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 4px; 
+  background-color: rgb(145, 144, 144);
+  align-items: center;
+}
+.quantity-div a
+{
+ text-decoration: none;
+ font-size: 20px;
+ color: black;
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <% include partials/header %>
+    <h1>Your cart</h1>
+    <div><a href="/mainpage">
+        <button>back</button>
+    </a>
+</div>
+    <hr>
+    <div class="cart-div">
+        
+        <p>Your total bill is: <span class="cart-span">
+                <%= amount %>
+            </span></p>
+        <a href="">Proceed to checkout</a>
+       
+    </div>
+    <hr>
+
+
+    <div class="cart-div-1">
+        <% cart.forEach((result)=>{ %>
+
+            <div class="cart-div-2">
+                <div class="">
+                    <img src="/images/<%= result.Image %>" alt="Image">
+                </div>
+                <hr>
+                <div>
+                    <hr>
+                    <li>Name: <%= result.Name %>
+                    </li>
+                    <li>Price: <%= result.Size %>
+                    </li>
+                    <li>Price: <%= result.Price %>
+                    </li>
+ 
+                    <div class="quantity-div">
+                        <span> Quantity: </span>
+                        <a href="/<%= result.ProductID %>/cart/update?action=minus">-</a>
+                        <%= result.Quantity %>         
+                        <a href="/<%= result.ProductID %>/cart/update?action=plus">+</a>
+                    </div>
+                    
+                    <div class="cart-2">
+                        <a href="/<%= result.ProductID %>/cart/remove">
+                            <button class="Button-5">Remove</button>
+                        </a>
+                        <a href="">
+                            <button class="Button-5">Buy Now</button>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+            <% }) %>
+
+    </div>
+</body>
+
+</html>

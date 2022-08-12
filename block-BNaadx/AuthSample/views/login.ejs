@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Login form</h1>
-    
-      
-    
-    
-   <form class="" action="/login" method="post">
-       <% if(error) {%>
-         
-          <p class="error-login"><%= error %></p>
-       <% } %>
-          <label>Username</label>
-          <input type="text" name="Username">
-          <label>Password</label>
-          <input type="password" name="Password">
-          <input type="submit">
+
+<head>
+  <title></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <% include partials/header %>
+  <h1>Login form</h1>
+
+  <form class="form-1 form-2" action="/login" method="post">
+
+    <% if(error) {%>
+      <p class="error-login">
+        <%= error %>
+      </p>
+
+      <% } %>
+        <label>Username</label>
+        <input type="text" name="Username">
+        <label>Password</label>
+        <input type="password" name="Password">
+        <input class="submit-button" type="submit">
   </form>
 
 </body>
+
 </html>
