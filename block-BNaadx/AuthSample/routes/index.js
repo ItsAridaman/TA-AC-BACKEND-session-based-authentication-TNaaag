@@ -138,14 +138,42 @@ router.post('/login', (req, res) => {
 //     }
 //   });
 // });
+router.get('/mainpage/filter', (req, res) => {
+  var cart = req.session.cart;
+  var category = req.query.category;
+  var price = req.query.price;
+  var size = req.query.size;
+
+  var myArray = price.split("");
+  if (myArray[0] == 'L') {
+    var myvalue = 1;
+  };
+  if (myArray[0] == 'H') {
+    var myvalue = -1;
+  };
+
+  product.find({
+    $and: [
+      { Name: new RegExp(category, 'i') },
+      { Size: new RegExp(size, 'i') }
+    ]
+  }).sort({Price: myvalue}).exec(req.body, (err, result) => {
+    console.log(result);
+    res.render('mainpage.ejs', { result: result, cart: cart });
+  });
+})
+
+
+
 
 
 router.get('/mainpage', (req, res) => {
-  var cart=req.session.cart;
+  var cart = req.session.cart;
+
 
   product.find({}, req.body, (err, result) => {
-    
-    res.render('mainpage.ejs', { result: result, cart:cart});
+
+    res.render('mainpage.ejs', { result: result, cart: cart });
   })
 })
 
@@ -339,7 +367,7 @@ router.get('/cart', (req, res) => {
   var amount = 0;
   for (var i = 0; i < cart.length; i++) {
 
-    amount += cart[i].Price*cart[i].Quantity;
+    amount += cart[i].Price * cart[i].Quantity;
 
   }
   res.render('cartUI', { cart, amount })
