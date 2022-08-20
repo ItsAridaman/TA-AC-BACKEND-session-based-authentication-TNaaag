@@ -13,18 +13,16 @@ var usersRouter = require('./routes/users');
 var session = require('express-session');
 var flash=require('connect-flash');
 var fileUpload=require('express-fileupload');
-var auth=require('./middlewares/auth')
+var auth=require('./middlewares/auth');
+// var passport=require('passport');
 
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/AuthDemo", (err) => {
   console.log(err ? err : "connected to the database")
 });
-
+require('./modules/passport');
 var app = express();
-
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,13 +44,18 @@ app.use(session({
     mongoUrl: "mongodb://127.0.0.1:27017/AuthDemo"
   })}));
 
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 app.use(flash());
 app.use(fileUpload());
-
 
 app.use(auth.userInfo);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

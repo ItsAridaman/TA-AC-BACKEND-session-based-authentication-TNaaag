@@ -6,6 +6,8 @@ var comment = require('../Models/commentModel');
 var mkdirp = require('mkdirp');
 var fs = require('fs-extra');
 var resizeImage = require('resize-img');
+var auth = require('../middlewares/auth');
+var passport = require('passport');
 
 
 var bcrypt = require('bcrypt');
@@ -13,9 +15,42 @@ var bcrypt = require('bcrypt');
 
 /* GET home page. */
 
+// router.get('/home', (req, res) => {
+//   res.render('index.ejs');
+// });
+
+
+router.get('/auth/github',
+  passport.authenticate('github'));
+
+router.get('/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/mainpageOpen' }),
+  function (req, res) {
+    console.log("hello");
+    console.log(res.locals.user);
+
+    console.log("hello");
+
+
+    if (req.session.cart) {
+      return res.redirect('/mainpage');
+    }
+    if (!req.session.cart) {
+      req.session.cart = [];
+      return res.redirect('/mainpage');
+
+    }
+
+  });
+
 router.get('/home', (req, res) => {
-  res.render('index.ejs');
+
+  product.find({}, req.body, (err, result) => {
+
+    res.render('mainpageOpen.ejs', { result: result });
+  })
 });
+
 
 router.get('/RegistrationForm', (req, res) => {
   res.render('RegistrationForm.ejs');
@@ -70,7 +105,9 @@ router.post('/login', (req, res) => {
         product.find({}, (err, result) => {
 
           if (err) console.log(err);
+          console.log(req.body);
           if (!req.session.userId) {
+            console.log(req.session);
             console.log("no session created");
             req.session.userId = user._id;
             req.session.cart = [];
@@ -79,7 +116,8 @@ router.post('/login', (req, res) => {
           if (req.session.userId) {
             console.log("session already created");
             console.log(req.session.cart);
-
+            console.log("hi 1");
+            console.log(req.session);
             return res.redirect('/mainpage');
           }
 
@@ -157,7 +195,7 @@ router.get('/mainpage/filter', (req, res) => {
       { Name: new RegExp(category, 'i') },
       { Size: new RegExp(size, 'i') }
     ]
-  }).sort({Price: myvalue}).exec(req.body, (err, result) => {
+  }).sort({ Price: myvalue }).exec(req.body, (err, result) => {
     console.log(result);
     res.render('mainpage.ejs', { result: result, cart: cart });
   });
@@ -169,8 +207,6 @@ router.get('/mainpage/filter', (req, res) => {
 
 router.get('/mainpage', (req, res) => {
   var cart = req.session.cart;
-
-
   product.find({}, req.body, (err, result) => {
 
     res.render('mainpage.ejs', { result: result, cart: cart });
@@ -178,9 +214,8 @@ router.get('/mainpage', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-
   res.clearCookie('connect-sid');
-  res.redirect('/login');
+  res.redirect('/home');
 });
 
 router.get('/addnew', (req, res) => {
@@ -199,6 +234,16 @@ router.get('/:id/productdetails', (req, res) => {
   product.findById(id, (err, result) => {
     comment.find({ productId: id }, (err, comment) => {
       res.render('productdetails.ejs', { result, comment });
+    })
+
+  });
+});
+
+router.get('/:id/productdetailsOpen', (req, res) => {
+  var id = req.params.id;
+  product.findById(id, (err, result) => {
+    comment.find({ productId: id }, (err, comment) => {
+      res.render('productdetailsOpen.ejs', { result, comment });
     })
 
   });
@@ -273,7 +318,7 @@ router.get('/:id/likes', (req, res) => {
   })
 });
 
-router.get('/:id/cart/mainpage', (req, res) => {
+router.get('/:id/cart/mainpage', auth.isUserLoggedIn, (req, res) => {
   var id = req.params.id;
   product.findById(id, (err, result) => {
     if (err) console.log(err);
@@ -308,7 +353,7 @@ router.get('/:id/cart/mainpage', (req, res) => {
   })
 });
 
-router.get('/:id/cart', (req, res) => {
+router.get('/:id/cart', auth.isUserLoggedIn, (req, res) => {
   var id = req.params.id;
   product.findById(id, (err, result) => {
     if (err) console.log(err);
