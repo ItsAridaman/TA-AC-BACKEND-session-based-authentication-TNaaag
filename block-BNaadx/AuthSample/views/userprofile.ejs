@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <% include partials/header %>
+    <div><a href="/mainpage">
+            <button>back</button>
+        </a>
+    </div>
+    <div>
+        <div class="profile-div">
+            <span>Name: <%= userdetail.Name %></span>
+            <span>Username: <%= userdetail.Username %></span>
+            <span>Password: <%= userdetail.Password %></span>
+        </div>
+        <div class="profile-div-1">
+            <a href="/editprofile">Edit profile or change password</a>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

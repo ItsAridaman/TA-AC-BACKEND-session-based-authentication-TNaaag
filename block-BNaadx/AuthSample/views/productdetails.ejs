@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <% include partials/header %>
+    <div class="product-details-3">
+        <h1>Edit product details</h1>
+        <div><a href="/mainpage">
+                <button>back</button>
+            </a>
+        </div>
+        <hr>
+
+        <div class="product-details-4">
+            
+
+            <div class="image-div1 area">
+                <img src="/images/<%= result.Image %>" alt="Image">
+            </div>
+            <div class="area">
+
+                <li>
+                    Name: <%= result.Name %>
+                </li>
+                <li>
+                    Price: <%= result.Price %>
+                </li>
+                <li>
+                    Size: <%= result.Size %>
+                </li>
+                <li>
+                    Description: <%= result.Description %>
+                </li>
+    
+                <a href="/<%= result._id %>/edit">Edit</a>
+                <a href="/<%= result._id %>/delete">Delete</a>
+            
+    
+            <hr>
+            <div>
+                <a href="/<%= result._id %>/likes">
+                    <button>Likes</button>
+                </a>
+            </div>
+            <%= result.Likes %>
+                <hr>
+    
+                <div class="button-div-cart">
+                    <a href="/<%= result._id %>/cart">
+                        <button class="Button">Add to cart</button>
+                    </a>
+                    <a href="">
+                        <button class="Button">Buy Now</button>
+                    </a>
+                </div>
+    
+                <div>
+    
+                    <form action="/<%= result._id %>/comment" method="post">
+                        <h>Add comment</h>
+                        <textarea name="content"></textarea>
+                        <input type="submit">
+                    </form>
+                </div>
+    
+                <div>
+                    <h2>Comments:-</h2>
+                    <hr>
+                    <% comment.forEach((comment)=>{ %>
+                        <div class="comment-div">
+                            <li>
+                                <%= comment.content %>
+                            </li>
+    
+                        </div>
+    
+                        <a href="/comment/edit/<%= comment._id %>">edit</a>
+                        <a href="/comment/delete/<%= comment._id %>">delete</a>
+                        <% }) %>
+                </div>
+
+            </div>
+           
+
+
+    </div>
+</body>
+
+</html>
